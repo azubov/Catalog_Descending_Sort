@@ -59,28 +59,22 @@ public class Solution {
         list.sort((o1, o2) -> {
 
             // Split each division path to subdivisions
-            // Compare each element
-            // If elements are different -> return and swap
-            // Compare length
-            // If length has difference -> return and swap
-            // In other case continue
+            // Iterate on the shortest division path
+                // Compare each element
+                // If elements are different -> return and swap
+                // Compare length
+                // If length has difference -> return and swap
+                // In other case continue
             // If Iteration finished return 0;
 
             String[] d1 = o1.split("\\\\");
             String[] d2 = o2.split("\\\\");
 
             int result = 0;
-            // Iterating on the shortest division path
             for (int i = 0; i < Math.min(d1.length, d2.length); i++) {
-                // Compare each element from division
                 result = d2[i].compareTo(d1[i]);
-                // If difference occurred return result and swap
-                if (result != 0) {
-                    return result;
-                }
-                if (d1.length != d2.length) {
-                    return d1.length < d2.length ? -1 : 1;
-                }
+                if (result != 0) return result;
+                if (d1.length != d2.length) return d1.length < d2.length ? -1 : 1;
             }
             return result;
         });
